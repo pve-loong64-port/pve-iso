@@ -1,0 +1,34 @@
+Types: deb
+URIs: http://loong13.debian.net/debian-loong64/
+Suites: trixie trixie-updates
+Components: main contrib non-free non-free-firmware
+Signed-By: -----BEGIN PGP PUBLIC KEY BLOCK-----
+ .
+ mDMEaULb+RYJKwYBBAHaRw8BAQdAvuJgxoTDZMhKQRZWy8nsuGOLcFCw9an51E4M
+ hD+AoCe0JURlYmlhbiBUcml4aWUgRm9yIExvb25nNjQgU2lnbmluZyBLZXmIlgQT
+ FgoAPhYhBHNPq4rcY2kJxmJYg9ge1RSge52oBQJpQtv5AhsDBQkJZgGABQsJCAcC
+ BhUKCQgLAgQWAgMBAh4BAheAAAoJENge1RSge52okNYA/03lT7LUV6D20ovK7/oT
+ cxqYAllFPTMq8HF3nOa1hJnnAQDp+8p5igx/WhedFuhqpifeQsRUitQcbW4q2A5j
+ 9/pnDQ==
+ =F7KP
+ -----END PGP PUBLIC KEY BLOCK-----
+
+
+Types: deb
+URIs: https://pve.loongfans.cn/
+Suites: stable
+Components: main
+Signed-By: -----BEGIN PGP PUBLIC KEY BLOCK-----
+ .
+ mDMEag6NShYJKwYBBAHaRw8BAQdAlL2CF8pCbwUY7o4+u7tn/qQ434lBEtnJ80Ot
+ yGcPvBq0K1Byb3htb3ggVkUgTG9vbmc2NCA8d3VrYWl5YW5nQGxvb25nZmFucy5j
+ bj6IlgQTFgoAPhYhBELsVYj6TRKpW0STtUasrerxibivBQJqDo1KAhsDBQkJZgGA
+ BQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEEasrerxibivI7IBAMYGRTrUdc1a
+ u9rOiaTZ9YLmzQKl9nSRdN+qOZ1bJfgfAQCaWp5aw9vU+2H6uD2PmxfHC41nK//5
+ n+R1QqiKx3ZADbg4BGoOjUoSCisGAQQBl1UBBQEBB0BwCpsFcGPH8b16N7btWiB4
+ JxDLMw97+smyFeeFkimcKwMBCAeIfgQYFgoAJhYhBELsVYj6TRKpW0STtUasrerx
+ ibivBQJqDo1KAhsMBQkJZgGAAAoJEEasrerxibivv9cA/jy18EMf19zfmelx9aB8
+ HxHzPG3tU7UKDFMveEh8XpuJAQC7zA4gfa8jYhKBdQgMX7bpSmdRczdXCiojNDkH
+ nMLGCA==
+ =/Qzb
+ -----END PGP PUBLIC KEY BLOCK-----

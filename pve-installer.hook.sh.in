@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+mkdir -pv "$1"/{cdrom,rpool,target}
+
+cat << 'EOF' > "$1"/etc/initramfs-tools/hooks/pve-init
+#!/bin/sh -e
+echo 'Overriding files inside initrd for PVE ...'
+install -Dvm755 /usr/sbin/pve-iso-init "${DESTDIR}"/init
+echo '@CDID@' > "${DESTDIR}"/.pve-cd-id.txt
+echo '@REL_INFO_B64@' | base64 -d > "${DESTDIR}"/.cd-info
+mkdir -pv "${DESTDIR}"/sys "${DESTDIR}"/proc "${DESTDIR}"/dev "${DESTDIR}"/mnt
+EOF
+chmod a+x "$1"/etc/initramfs-tools/hooks/pve-init
+chroot "$1" /usr/sbin/update-initramfs -u -k all
+
+rm -f /usr/sbin/pve-iso-init
