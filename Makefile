@@ -39,6 +39,9 @@ all: $(ISO)
 build:
 	mkdir -pv build
 
+release.info: release.info.in
+	sed -e's|@RELEASE@|$(RELEASE)|g' -e's|@ISORELEASE@|$(ISORELEASE)|g' $< > $@
+
 build/pve-installer.squashfs: PACKAGE_LIST = $(subst $(SPACE),$(COMMA),$(sort $(file < pve-installer.list)))
 build/pve-installer.squashfs: pve-loong64.sources pve-installer.list /tmp/pve-installer.hook.sh build pve-iso-init
 	mmdebstrap $(MM_OPTIONS) --include='$(PACKAGE_LIST)' --customize-hook='upload pve-iso-init /usr/sbin/pve-iso-init' \
@@ -53,7 +56,11 @@ build/pve-base.squashfs: pve-loong64.sources build pve-base.list
 	mkdir -pv build/proxmox
 	unsquashfs -l $@ | wc -l > build/proxmox/pve-base.cnt
 
-build/.disk: release.info build pve-cd-id.txt
+build/proxmox/packages: fetch-packages.sh
+	mkdir -pv build/proxmox/packages
+	$(CURDIR)/fetch-packages.sh build/proxmox/packages $(ISO_PACKAGES)
+
+build/.disk: release.info build pve-cd-id.txt build/proxmox/packages
 	rm -rf build/.disk && mkdir -p build/.disk
 	touch build/.disk/$$(date --utc +'%Y-%m-%d-%H-%M-%S.uuid')
 	cp -v release.info build/.disk/info
@@ -65,8 +72,6 @@ build/.disk: release.info build pve-cd-id.txt
 	mkdir -pv build/.installer-mp
 	mkdir -pv build/.workdir
 	mkdir -pv build/dists/$(DEBIAN_RELEASE)/pve/binary-loong64
-	mkdir -pv build/proxmox/packages
-	cd build/proxmox/packages && apt download $(ISO_PACKAGES); cd ../../../
 
 build/boot/linux26: build/pve-installer.squashfs
 	rm -rf /tmp/pve-iso-tmp && unsquashfs -d /tmp/pve-iso-tmp $< /boot
@@ -86,6 +91,6 @@ $(ISO): build/pve-installer.squashfs build/pve-base.squashfs build/.disk build/b
 	grub-mkrescue -o $@ build/ -- -as mkisofs -V "PVE" -R
 
 clean:
-	rm -rf build dist *.iso *.deb /tmp/pve-installer.hook.sh
+	rm -rf build dist *.iso *.deb /tmp/pve-installer.hook.sh release.info
 
 .PHONY: clean
