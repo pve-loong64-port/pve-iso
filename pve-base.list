@@ -8,5 +8,15 @@ zfs-zed
 zfs-initramfs
 vim-common
 vim-tiny
+man-db
+manpages
 nano
 console-setup
+ssh
+strace
+time
+util-linux-extra
+tcpdump
+rsync
+wireguard-tools
+bash-completion
