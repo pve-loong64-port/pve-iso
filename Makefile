@@ -81,6 +81,7 @@ memtest86+loong64.deb:
 
 build/boot/memtest86+loong64: memtest86+loong64.deb build
 	rm -rf /tmp/pve-iso-deb-tmp/ && dpkg-deb -x $< /tmp/pve-iso-deb-tmp/
+	mkdir -pv build/boot
 	cp -v /tmp/pve-iso-deb-tmp/boot/mt86+ $@
 	rm -rf /tmp/pve-iso-deb-tmp/
 
