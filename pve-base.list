@@ -41,6 +41,7 @@ dirmngr
 distro-info-data
 lsof
 locales
+locales-all
 mokutil
 netavark
 golang-github-containers-common
