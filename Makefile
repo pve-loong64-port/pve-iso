@@ -11,7 +11,7 @@ PVE_CDID = $(strip $(file < pve-cd-id.txt))
 DEBIAN_RELEASE := trixie
 RELEASE := 9.2
 ISORELEASE := 1
-ISO := proxmox-ve_$(RELEASE)-$(ISORELEASE)_loong64.iso
+ISO := proxmox-ve_$(RELEASE)-$(ISORELEASE)+pve-kernel-lns23_loong64.iso
 
 ISO_PACKAGES := libefiboot1t64 \
 		libefivar1t64 \
