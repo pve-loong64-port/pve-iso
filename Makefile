@@ -3,7 +3,7 @@ SPACE := $(EMPTY) $(EMPTY)
 COMMA := ,
 
 MM_EXTRA_OPTIONS ?= 
-MM_OPTIONS := --arch=loong64 --mode=unshare --keyring=./keyring --dpkgopt='force-confnew' \
+MM_OPTIONS := --verbose --arch=loong64 --mode=unshare --keyring=./keyring --dpkgopt='force-confnew' \
 --customize-hook='rm -f "$$1"/etc/dpkg/dpkg.cfg.d/99mmdebstrap "$$1"/etc/apt/apt.conf.d/99mmdebstrap' $(MM_EXTRA_OPTIONS)
 
 PVE_CDID = $(strip $(file < pve-cd-id.txt))
