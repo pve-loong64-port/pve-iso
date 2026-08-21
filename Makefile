@@ -11,7 +11,8 @@ PVE_CDID = $(strip $(file < pve-cd-id.txt))
 DEBIAN_RELEASE := trixie
 RELEASE := 9.2
 ISORELEASE := 1
-ISO := proxmox-ve_$(RELEASE)-$(ISORELEASE)_loong64.iso
+ARCH := loong64
+ISO := proxmox-ve_$(RELEASE)-$(ISORELEASE)-$(ARCH).iso
 
 ISO_PACKAGES := libefiboot1t64 \
 		libefivar1t64 \
@@ -40,7 +41,7 @@ build:
 	mkdir -pv build
 
 release.info: release.info.in
-	sed -e's|@RELEASE@|$(RELEASE)|g' -e's|@ISORELEASE@|$(ISORELEASE)|g' $< > $@
+	sed -e's|@RELEASE@|$(RELEASE)|g' -e's|@ISORELEASE@|$(ISORELEASE)|g' -e's|@ARCH@|$(ARCH)|g' $< > $@
 
 build/pve-installer.squashfs: PACKAGE_LIST = $(subst $(SPACE),$(COMMA),$(sort $(file < pve-installer.list)))
 build/pve-installer.squashfs: pve-loong64.sources pve-installer.list /tmp/pve-installer.hook.sh build pve-iso-init
