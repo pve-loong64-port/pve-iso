@@ -54,3 +54,4 @@ numactl
 open-iscsi
 pinentry-curses
 procmail
+chrony
